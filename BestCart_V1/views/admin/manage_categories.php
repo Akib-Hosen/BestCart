@@ -35,6 +35,7 @@
     <title>Manage Categories</title>
     <link rel="stylesheet" href="../../assets/css/admin.css?v=<?php echo time(); ?>">
     <script src="https://unpkg.com/lucide@latest"></script>
+<script src="../../assets/js/ajax.js?v=<?php echo time(); ?>"></script>
 </head>
 <body>
 
@@ -45,7 +46,7 @@
 
         <div class="card">
             <h4 style="margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">Create New Category</h4>
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" action="../../controllers/adminCategoryController.php" data-ajax="true" data-reset="true">
                 <div class="form-row">
                     <div class="input-group">
                         <label>Category Name</label>
@@ -68,7 +69,7 @@
             </div>
             <table>
                 <thead>
-                    <tr>
+                    <tr id="row-<?= $c['id'] ?>">
                         <th>Image</th>
                         <th>Name</th>
                         <th>Actions</th>

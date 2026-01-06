@@ -38,7 +38,7 @@
 
 <div class="card">
     <h3 style="margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">Add New User</h3>
-    <form method="post">
+    <form method="post" action="../../controllers/adminUserController.php" data-ajax="true" data-reset="true">
         <div class="form-row">
             <div class="input-group">
                 <label>Username</label>
@@ -81,7 +81,7 @@
 
     <table id="usersTable">
         <thead>
-            <tr>
+            <tr id="row-<?= $u['id'] ?>">
                 <th>ID</th>
                 <th>User Profile</th>
                 <th>Email</th>

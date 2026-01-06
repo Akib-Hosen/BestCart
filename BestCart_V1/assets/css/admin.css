@@ -1,12 +1,12 @@
 /* admin/style.css */
 :root {
-    --primary: #2563eb;
-    --primary-hover: #1d4ed8;
+    --primary: #EC009B;
+    --primary-hover: #c4007f;
     --dark: #0f172a;
-    --light: #f8fafc;
+    --light: #FDF2F8;
     --white: #ffffff;
     --border: #e2e8f0;
-    --text: #334155;
+    --text: #0f172a;
     --danger: #ef4444;
 }
 
@@ -195,9 +195,9 @@ table {
 th {
     text-align: left;
     padding: 15px;
-    background: #f8fafc;
+    background: var(--primary);
     border-bottom: 1px solid var(--border);
-    color: #64748b;
+    color: var(--white);
     font-size: 0.85rem;
     text-transform: uppercase;
 }

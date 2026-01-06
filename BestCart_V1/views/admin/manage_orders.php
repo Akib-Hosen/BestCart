@@ -45,7 +45,7 @@
 
 <div class="card">
     <h3 style="margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">Place New Order</h3>
-    <form method="post">
+    <form method="post" action="../../controllers/adminOrderController.php" data-ajax="true" data-reset="true">
         <div class="form-row" style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0;">
             <div class="input-group">
                 <label>Find Product</label>
@@ -75,7 +75,7 @@
 
         <div class="form-row">
             <div class="input-group">
-                <label>Total Amount ($)</label>
+                <label>Total Amount (৳)</label>
                 <input type="number" step="0.01" name="amount" id="totalAmount" class="form-control" style="background-color:#e2e8f0; font-weight:bold;">
             </div>
         </div>
@@ -127,10 +127,10 @@
 
     <table id="ordersTable">
         <thead>
-            <tr>
+            <tr id="row-<?= $o['id'] ?>">
                 <th>ID</th>
                 <th>Customer Info</th>
-                <th>Amount</th>
+                <th>Total Amount (৳)</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -147,7 +147,7 @@
                         <?= isset($o['order_items']) ? htmlspecialchars($o['order_items']) : 'Manual Order' ?>
                     </span>
                 </td>
-                <td>$<?= number_format($o['total_amount'], 2) ?></td>
+                <td>৳<?= number_format($o['total_amount'], 2) ?></td>
                 <td>
                     <?php 
                         $color = "#f59e0b"; 

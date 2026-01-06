@@ -1,24 +1,57 @@
 <?php
-// admin/file_handler.php
+// views/admin/file_handler.php
+// Safe upload helper (works from both views and controllers)
+
+
+function sanitizeFileNameSimple($name) {
+    $name = basename($name);
+    $out = "";
+    $len = strlen($name);
+    for ($i = 0; $i < $len; $i++) {
+        $ch = $name[$i];
+        if (ctype_alnum($ch) || $ch === '.' || $ch === '_' || $ch === '-') {
+            $out .= $ch;
+        } else {
+            $out .= '_';
+        }
+    }
+    if ($out === "") {
+        $out = "file";
+    }
+    return $out;
+}
 
 function uploadImage($file) {
-    // 1. Check if a file was actually uploaded
-    if (!isset($file['name']) || $file['name'] == "") {
-        return "default.png"; // Return a default image if none selected
+    // 1) No file selected
+    if (!isset($file['name']) || $file['name'] === "") {
+        return "default.png";
     }
 
-    // 2. Define the target directory (Going back one level from 'admin' to 'uploads')
-    $targetDir = "../../uploads/";
-
-    // 3. Generate a unique name: time + original name to prevent duplicates
-    $fileName = time() . "_" . basename($file['name']);
-    $targetFile = $targetDir . $fileName;
-
-    // 4. Move the file
-    if (move_uploaded_file($file['tmp_name'], $targetFile)) {
-        return $fileName; // Success: Return the new name to save in DB
-    } else {
-        return "default.png"; // Failed: Return default
+    // 2) Absolute filesystem path to /uploads
+    $uploadDir = realpath(__DIR__ . "/../../uploads");
+    if ($uploadDir === false) {
+        // Try create if missing
+        $uploadDir = __DIR__ . "/../../uploads";
+        if (!is_dir($uploadDir)) {
+            @mkdir($uploadDir, 0777, true);
+        }
+        $uploadDir = realpath($uploadDir);
     }
+
+    if ($uploadDir === false) {
+        return "default.png";
+    }
+
+    // 3) Unique filename
+    $safeName = sanitizeFileNameSimple($file['name']);
+    $fileName = time() . "_" . $safeName;
+    $targetFile = $uploadDir . DIRECTORY_SEPARATOR . $fileName;
+
+    // 4) Move upload (suppress warnings to avoid breaking JSON)
+    if (isset($file['tmp_name']) && $file['tmp_name'] !== "" && @move_uploaded_file($file['tmp_name'], $targetFile)) {
+        return $fileName;
+    }
+
+    return "default.png";
 }
 ?>

@@ -8,10 +8,13 @@
     require_once('../../models/productModel.php');
     require_once('../../models/orderModel.php');
     require_once('../../models/userModel.php');
+    $p_res = getAllProducts();
+    $o_res = getAllOrders();
+    $u_res = getAllUser();
 
-    $p_count = count(getAllProducts());
-    $o_count = count(getAllOrders());
-    $u_count = count(getAllUser());
+    $p_count = ($p_res && $p_res instanceof mysqli_result) ? mysqli_num_rows($p_res) : (is_array($p_res) ? count($p_res) : 0);
+    $o_count = ($o_res && $o_res instanceof mysqli_result) ? mysqli_num_rows($o_res) : (is_array($o_res) ? count($o_res) : 0);
+    $u_count = ($u_res && $u_res instanceof mysqli_result) ? mysqli_num_rows($u_res) : (is_array($u_res) ? count($u_res) : 0);
 
     // --- FETCH SALES DATA ---
     $sales_data = getSalesByDate();
@@ -68,7 +71,7 @@
                             <tr>
                                 <td><b><?= $day['order_date'] ?></b></td>
                                 <td><?= $day['total_orders'] ?> Orders</td>
-                                <td style="color:#10b981; font-weight:bold;">$<?= number_format($day['total_sales'], 2) ?></td>
+                                <td style="color:#10b981; font-weight:bold;">৳<?= number_format($day['total_sales'], 2) ?></td>
                             </tr>
                         <?php } ?>
                     <?php } ?>

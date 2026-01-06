@@ -14,6 +14,7 @@ $page = basename($_SERVER['PHP_SELF']);
     <title>BestCart Admin</title>
     <link rel="stylesheet" href="../../assets/css/admin.css?v=<?php echo time(); ?>">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../assets/js/ajax.js?v=<?php echo time(); ?>"></script>
 </head>
 
 <body>
@@ -47,7 +48,7 @@ $page = basename($_SERVER['PHP_SELF']);
         </div>
 
         <div>
-            <a href="login.php?logout=true" class="nav-item logout-btn">
+            <a href="../../controllers/adminAuthController.php?logout=1" class="nav-item logout-btn">
                 <i data-lucide="log-out"></i> Logout
             </a>
         </div>

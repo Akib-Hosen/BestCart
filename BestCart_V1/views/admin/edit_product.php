@@ -62,7 +62,9 @@
 <div class="header-title">Edit Product</div>
 
 <div class="card" style="max-width: 800px; margin: 0 auto;">
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" action="../../controllers/adminProductController.php" data-ajax="true">
+        <input type="hidden" name="product_id" value="<?= $p['id'] ?>">
+
 
         <div style="text-align:center; margin-bottom:20px;">
             <label>Current Image:</label><br>
@@ -98,11 +100,11 @@
 
         <div class="form-row">
             <div class="input-group">
-                <label>Original Price ($)</label>
+                <label>Original Price (৳)</label>
                 <input type="number" step="0.01" name="price" class="form-control" value="<?= $p['price'] ?>" required>
             </div>
             <div class="input-group">
-                <label>Discount Price ($)</label>
+                <label>Discount Price (৳)</label>
                 <input type="number" step="0.01" name="discount" class="form-control" value="<?= $p['discount_price'] ?>">
             </div>
         </div>

@@ -26,7 +26,9 @@
 <div class="header-title">Edit Order #<?= $order['id'] ?></div>
 
 <div class="card" style="max-width: 700px; margin: 0 auto;">
-    <form method="post">
+    <form method="post" action="../../controllers/adminOrderController.php" data-ajax="true">
+        <input type="hidden" name="order_id" value="<?= $order['id'] ?>">
+
         
         <div class="form-row">
             <div class="input-group">
@@ -34,7 +36,7 @@
                 <input type="text" name="customer" class="form-control" value="<?= htmlspecialchars($order['customer_name']) ?>" required>
             </div>
             <div class="input-group">
-                <label>Total Amount ($)</label>
+                <label>Total Amount (৳)</label>
                 <input type="number" step="0.01" name="amount" class="form-control" value="<?= $order['total_amount'] ?>" required>
             </div>
         </div>

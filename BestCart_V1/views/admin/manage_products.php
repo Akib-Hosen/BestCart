@@ -55,7 +55,7 @@
 
 <div class="card">
     <h3 style="margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">Add New Product</h3>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" action="../../controllers/adminProductController.php" data-ajax="true" data-reset="true">
         <div class="form-row">
             <div class="input-group">
                 <label>Product Name</label>
@@ -78,11 +78,11 @@
         </div>
         <div class="form-row">
             <div class="input-group">
-                <label>Original Price ($)</label>
+                <label>Original Price (৳)</label>
                 <input type="number" step="0.01" name="price" class="form-control" required>
             </div>
             <div class="input-group">
-                <label>Discount Price ($)</label>
+                <label>Discount Price (৳)</label>
                 <input type="number" step="0.01" name="discount" class="form-control" value="0.00">
             </div>
         </div>
@@ -109,7 +109,7 @@
 
     <table id="productsTable">
         <thead>
-            <tr>
+            <tr id="row-<?= $p['id'] ?>">
                 <th>Image</th>
                 <th>Name & Category</th>
                 <th>Price</th>
@@ -134,10 +134,10 @@
                 </td>
                 <td>
                     <?php if($p['discount_price'] > 0){ ?>
-                        <span style="text-decoration:line-through; color:#aaa;">$<?= $p['price'] ?></span><br>
-                        <b style="color:#10b981;">$<?= $p['discount_price'] ?></b>
+                        <span style="text-decoration:line-through; color:#aaa;">৳<?= $p['price'] ?></span><br>
+                        <b style="color:#10b981;">৳<?= $p['discount_price'] ?></b>
                     <?php } else { ?>
-                        $<?= $p['price'] ?>
+                        ৳<?= $p['price'] ?>
                     <?php } ?>
                 </td>
                 <td><?= $p['quantity'] ?></td>

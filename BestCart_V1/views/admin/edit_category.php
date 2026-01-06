@@ -38,6 +38,7 @@
     <title>Edit Category</title>
     <link rel="stylesheet" href="../../assets/css/admin.css?v=<?php echo time(); ?>">
     <script src="https://unpkg.com/lucide@latest"></script>
+<script src="../../assets/js/ajax.js?v=<?php echo time(); ?>"></script>
 </head>
 <body>
 
@@ -47,7 +48,9 @@
         <div class="header-title">Edit Category</div>
 
         <div class="card" style="max-width: 600px; margin: 0 auto;">
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" action="../../controllers/adminCategoryController.php" data-ajax="true">
+        <input type="hidden" name="category_id" value="<?= $cat['id'] ?>">
+
                 
                 <div style="text-align:center; margin-bottom:20px;">
                     <label>Current Image:</label><br>

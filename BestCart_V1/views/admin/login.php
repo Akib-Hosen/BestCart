@@ -25,11 +25,12 @@
         input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
         button { width: 100%; padding: 12px; background: #2563eb; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
     </style>
+<script src="../../assets/js/ajax.js?v=<?php echo time(); ?>"></script>
 </head>
 <body>
     <div class="login-box">
         <h2 style="text-align:center; color:#333;">Admin Login</h2>
-        <form method="post">
+        <form method="post" action="../../controllers/adminAuthController.php" data-ajax="true">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit" name="submit">Sign In</button>

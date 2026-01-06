@@ -39,6 +39,7 @@ $sliders = getAllSliders();
     <title>Manage Sliders</title>
     <link rel="stylesheet" href="../../assets/css/admin.css?v=<?php echo time(); ?>">
     <script src="https://unpkg.com/lucide@latest"></script>
+<script src="../../assets/js/ajax.js?v=<?php echo time(); ?>"></script>
 </head>
 
 <body>
@@ -51,7 +52,7 @@ $sliders = getAllSliders();
 
         <div class="card">
             <h3 style="margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">Add New Slide</h3>
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" action="../../controllers/adminSliderController.php" data-ajax="true" data-reset="true">
                 <div class="form-row">
                     <div class="input-group">
                         <label>Title (Big Text)</label>
@@ -80,7 +81,7 @@ $sliders = getAllSliders();
             </div>
             <table>
                 <thead>
-                    <tr>
+                    <tr id="row-<?= $s['id'] ?>">
                         <th>Image</th>
                         <th>Title & Subtitle</th>
                         <th>Action</th>

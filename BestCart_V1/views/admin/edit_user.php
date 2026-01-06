@@ -30,7 +30,9 @@
 <div class="card" style="max-width: 600px; margin: 0 auto;">
     <h3 style="margin-bottom:20px;">Edit Profile: <?= htmlspecialchars($user['username']) ?></h3>
     
-    <form method="post">
+    <form method="post" action="../../controllers/adminUserController.php" data-ajax="true">
+        <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+
         <div class="form-row">
             <div class="input-group">
                 <label>Username</label>
