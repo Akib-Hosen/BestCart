@@ -1,0 +1,47 @@
+#editArea{
+    
+    background-color: white;
+    padding: 40px;
+    height: 600px;
+    width: 700px;
+    
+}
+
+#editArea h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#editArea input[type="text"],
+#editArea input[type="tel"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+}
+
+#changeConfirm{
+    background-color: #EC009B;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+}
+
+#changeConfirm:hover{
+    cursor: pointer;
+}
+
+
+
+#areaContainer{
+    background-color: #F9FAFB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 100px;
+}
