@@ -7,9 +7,9 @@
   --white:#ffffff;
 }
 
-/* =========================
-   PRODUCT DETAILS PAGE
-========================= */
+
+/* PRODUCT DETAILS PAGE */
+
 .details-container {
     max-width: 1200px;
     margin: 70px auto;
@@ -131,7 +131,7 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    text-decoration: none; /* In case it's an <a> tag */
+    text-decoration: none; 
     display: inline-flex;
     align-items: center;
     justify-content: center;

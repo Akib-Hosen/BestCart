@@ -1,6 +1,4 @@
-// ==========================================
 // PRODUCT DETAILS PAGE LOGIC
-// ==========================================
 function loadProductDetails(id) {
     // FIX: Using central API
     fetch(`../../api/api.php?action=get_product_details&id=${id}`)

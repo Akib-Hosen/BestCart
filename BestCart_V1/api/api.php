@@ -11,11 +11,8 @@
 
     $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 
-    // --- 1. DEFINE PUBLIC ACTIONS (Open to everyone) ---
     $public_actions = ['get_products', 'get_product_details', 'get_categories', 'get_sliders', 'login', 'register'];
 
-    // --- 2. SECURITY CHECK ---
-    // Only block if the action is NOT public and user is NOT logged in as Admin
     if(!in_array($action, $public_actions) && !isset($_SESSION['admin_status'])){
         echo json_encode(['success' => false, 'message' => 'Unauthorized']);
         exit();
@@ -23,9 +20,6 @@
 
     switch($action){
         
-        // =================================================
-        // PUBLIC ACTIONS (For Homepage & Client)
-        // =================================================
 
         // --- HOME: SLIDERS ---
         case 'get_sliders':
@@ -83,9 +77,6 @@
             echo json_encode(['success' => true]);
             break;
 
-        // =================================================
-        // ADMIN ACTIONS (Restored from your original file)
-        // =================================================
 
         // --- ADMIN: DASHBOARD STATS ---
         case 'get_dashboard':
@@ -106,13 +97,13 @@
             ]);
             break;
 
-        // --- ADMIN: ADD PRODUCT (via API) ---
+        // --- ADMIN: ADD PRODUCT  ---
         case 'add_product':
             $data = [
                 'name' => $_POST['name'],
                 'price' => $_POST['price'],
                 'quantity' => $_POST['stock'],
-                // Note: You might want to handle other fields like 'category' here too
+                
             ];
             if(addProduct($data)){
                 echo json_encode(['success' => true]);
@@ -121,7 +112,7 @@
             }
             break;
 
-        // --- ADMIN: DELETE PRODUCT (via API) ---
+        // --- ADMIN: DELETE PRODUCT ---
         case 'delete_product':
             if(isset($_POST['id'])){
                 deleteProduct($_POST['id']); 

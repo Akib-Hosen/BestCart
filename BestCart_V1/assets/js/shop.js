@@ -1,15 +1,14 @@
-// ==========================================
+
 // CONFIGURATION & STATE
-// ==========================================
 let currentSlide = 0;
 let autoTimer = null;
 let bannerImages = [];
 let productOffset = 0;      
 const productsPerLoad = 5; 
 
-// ==========================================
+
 // 1. BANNER SLIDER LOGIC
-// ==========================================
+
 function fetchBanners() {
     // FIX: Action 'get_sliders' connects to sliderModel
     fetch('../../api/api.php?action=get_sliders')
@@ -56,9 +55,9 @@ function stopAutoSlide() {
     autoTimer = null;
 }
 
-// ==========================================
+
 // 2. CATEGORIES LOGIC
-// ==========================================
+
 function fetchCategories() {
     // FIX: Central API
     fetch('../../api/api.php?action=get_categories')
@@ -98,9 +97,9 @@ function renderCategories(categories) {
     }
 }
 
-// ==========================================
+
 // 3. PRODUCTS LOGIC (WITH LOAD MORE)
-// ==========================================
+
 function loadProducts() {
     const loadMoreBtn = document.getElementById('load-more-btn');
     if(loadMoreBtn) loadMoreBtn.innerText = "Loading...";
@@ -157,9 +156,9 @@ function renderProducts(products) {
     grid.insertAdjacentHTML('beforeend', html);
 }
 
-// ==========================================
+
 // 4. INITIALIZATION
-// ==========================================
+
 document.addEventListener("DOMContentLoaded", function () {
     // 1. Initial Data Fetch
     fetchBanners();

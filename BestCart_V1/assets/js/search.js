@@ -1,11 +1,10 @@
-// ==========================================
 // SEARCH PAGE LOGIC
-// ==========================================
+
 function runSearch(term) {
     const grid = document.getElementById('search-grid');
     grid.innerHTML = "<h3>Searching...</h3>";
     
-    // FIX: Using central API for search
+    // FIX: Using API for search
     fetch(`../../api/api.php?action=get_products&search=${term}`)
         .then(res => res.json())
         .then(products => {
